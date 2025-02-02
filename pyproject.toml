@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=75.8.0", "setuptools-scm>=8.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epublib"
+description = "A Python library for reading / writing EPUB files."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE.md" }
+# license = "Unlicense"
+# license-files = ["LICENSE.md"]
+keywords = ["epublib", "epub", "ebook"]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: The Unlicense (Unlicense)",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Topic :: File Formats",
+  "Topic :: Text Processing :: Markup",
+  "Typing :: Typed",
+]
+dependencies = ["lxml>=5.3.0", "lxml-stubs>=0.5.1"]
+dynamic = ["version"]
+
+[project.urls]
+
+[project.scripts]
+bookgen = "epublib.cli:main"
+
+[dependency-groups]
+check = ["mypy[faster-cache]>=1.14.1", "ruff>=0.9.4"]
+check-editorconfig = ["editorconfig-checker>=3.2.0"]
+tests = ["pytest>=8.3.4", "pytest-xdist>=3.6.1"]
+dev = [
+  { include-group = "check" },
+  { include-group = "check-editorconfig" },
+  { include-group = "tests" },
+]
+gh-actions-build = [
+  { include-group = "tests" },
+  "pytest-github-actions-annotate-failures>=0.3.0",
+]
+
+[tool.mypy]
+exclude = ["^build/"]
+
+[tool.pytest.ini_options]
+addopts = "-n auto"
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.format]
+docstring-code-line-length = 72
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "D203", # one-blank-line-before-class
+  "D213", # multi-line-summary-second-line
+  "D418", # overload-with-docstring
+]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/conf.py" = [
+  "INP001", # implicit-namespace-package
+]
+"tests/**.py" = [
+  "S101",   # assert
+  "INP001", # implicit-namespace-package
+]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 72
+
+[tool.setuptools_scm]
