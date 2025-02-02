@@ -55,7 +55,7 @@ jobs:
     - name: Check with Ruff
       run: uv run ruff check --output-format=github .
     - name: Check with Ruff
-      run: uv run ruff format --check --output-format=github .
+      run: uv run ruff format --check .
 
   build:
     name: Build
