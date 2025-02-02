@@ -28,11 +28,9 @@ class EPUBFile:
         """Create an EPUB file object."""
         match file:
             case str() | PathLike():
-                self.filename = Path(file)
+                self.path = Path(file)
             case bytes():
-                self.filename = file.decode()
-            case PathLike():
-                self.filename = fsdecode(file)
+                self.path = Path(file.decode())
             case BufferedIOBase():
                 pass
             case None:
