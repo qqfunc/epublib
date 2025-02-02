@@ -28,6 +28,8 @@ jobs:
       run: uv sync --group check-editorconfig --no-default-groups --no-install-workspace
     - name: Check with editorconfig-checker
       run: uv run ec -format github-actions
+    - name: Spell check with typos
+      uses: crate-ci/typos@v1
 
   chcek-python:
     name: Check Python Files
