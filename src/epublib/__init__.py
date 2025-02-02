@@ -19,7 +19,7 @@ class EPUBFile:
 
     @overload
     def __init__(self, file: str | bytes | PathLike | IO[bytes]) -> None:
-        """Create an EPUB file object from the speciied file."""
+        """Create an EPUB file object from the specified file."""
 
     def __init__(
         self,
