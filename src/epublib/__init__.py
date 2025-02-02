@@ -5,7 +5,7 @@ from __future__ import annotations
 __all__ = ["EPUBFile"]
 
 from io import BufferedIOBase
-from os import PathLike, fsdecode
+from os import PathLike
 from pathlib import Path
 from typing import IO, overload
 
