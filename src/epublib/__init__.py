@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__all__ = []
+__all__ = ["EPUBFile"]
 
 from io import BufferedIOBase
 from os import PathLike, fsdecode
