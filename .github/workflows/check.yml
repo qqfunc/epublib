@@ -80,4 +80,4 @@ jobs:
     - name: Install dependencies
       run: uv sync --group gh-actions-build --no-default-groups
     - name: Test with pytest
-      run: pytest
+      run: uv run pytest
